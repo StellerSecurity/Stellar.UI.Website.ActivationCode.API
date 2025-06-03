@@ -7,7 +7,7 @@ use App\LicenseType;
 class LicenseHelper
 {
 
-    public static function whichLicense(string $code): int
+    public static function whichLicenseType(string $code): int
     {
 
         $licenseType = LicenseType::VPN->value;

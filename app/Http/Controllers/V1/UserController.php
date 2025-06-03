@@ -48,7 +48,7 @@ class UserController extends Controller
             return response()->json(['response_code' => 400, 'response_message' => 'User not authenticated.']);
         }
 
-        $licenseType = LicenseHelper::whichLicense($code);
+        $licenseType = LicenseHelper::whichLicenseType($code);
 
         $subscriptionType = SubscriptionType::ANTIVIRUS->value;
 
@@ -110,14 +110,12 @@ class UserController extends Controller
         ])->object();
 
         if(!isset($auth->user->id)) {
-            return response()->json(['response_code' => 400, 'response_message' => 'User not created.']);
+            return response()->json(['response_code' => 400, 'response_message' => 'User not created, the user already exists.']);
         }
 
-        $licenseType = LicenseHelper::whichLicense($code);
+        $licenseType = LicenseHelper::whichLicenseType($code);
 
         $license = $this->activationLicenseService->activate($code, $licenseType, 1)->object();
-
-        $licenseType = LicenseHelper::whichLicense($code);
 
         $subscriptionType = SubscriptionType::ANTIVIRUS->value;
 

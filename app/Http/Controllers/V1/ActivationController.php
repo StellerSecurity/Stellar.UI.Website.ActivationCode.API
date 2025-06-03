@@ -28,7 +28,7 @@ class ActivationController extends Controller
             return response()->json(['response_code' => 400, 'response_message' => 'No code provided.']);
         }
 
-        $licenseType = LicenseHelper::whichLicense($code);
+        $licenseType = LicenseHelper::whichLicenseType($code);
 
         $license = $this->activationLicenseService->activate($code, $licenseType, 0)->object();
 
