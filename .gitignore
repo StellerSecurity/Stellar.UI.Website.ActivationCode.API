@@ -29,3 +29,5 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
+# Markdown documentation stays local and must not be committed to GitHub.
+*.[mM][dD]
